@@ -1,0 +1,35 @@
+# Ignorar archivos innecesarios en el contenedor Docker
+.git
+.github
+.idea
+.vscode
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+coverage/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Archivos de configuración local
+*.iml
+*.ipr
+*.iws
+.metadata
+
+# Backend (se monta por volumen)
+backend/
+
+# Documentación
+README.md
+LICENSE
+*.md
+
+# Archivos de prueba
+test/

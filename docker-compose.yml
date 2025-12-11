@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # Base de datos MySQL
+  database:
+    image: mysql:8.0
+    container_name: empower_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_123
+      MYSQL_DATABASE: empower_db
+      MYSQL_USER: empower_user
+      MYSQL_PASSWORD: empower_pass_123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - empower_network
+
+  # Backend PHP
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: empower_backend
+    restart: always
+    depends_on:
+      - database
+    ports:
+      - "8080:80"
+    volumes:
+      - ./backend:/var/www/html
+    environment:
+      DB_HOST: database
+      DB_NAME: empower_db
+      DB_USER: empower_user
+      DB_PASSWORD: empower_pass_123
+    networks:
+      - empower_network
+
+  # Frontend Flutter Web
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: empower_frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+    networks:
+      - empower_network
+
+volumes:
+  mysql_data:
+
+networks:
+  empower_network:
+    driver: bridge
