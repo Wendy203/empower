@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(dir:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(docker --version:*)",
+      "Bash(docker-compose:*)"
     ]
   }
 }

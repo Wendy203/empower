@@ -9,13 +9,13 @@ RUN apt-get update && apt-get install -y \
     unzip \
     xz-utils \
     zip \
-    libgconf-2-4 \
     gdb \
     libstdc++6 \
     libglu1-mesa \
     fonts-droid-fallback \
     lib32stdc++6 \
     python3 \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # Clonar el repositorio de Flutter
