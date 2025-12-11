@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'configuracion_page.dart';
 
 class PerfilPage extends StatelessWidget {
   final String correoUsuario;
@@ -36,7 +37,14 @@ class PerfilPage extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Configuración'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ConfiguracionPage(correoUsuario: correoUsuario),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.logout),
