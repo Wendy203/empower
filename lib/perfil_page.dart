@@ -5,6 +5,7 @@ import 'configuracion_page.dart';
 class PerfilPage extends StatelessWidget {
   final String correoUsuario;
   const PerfilPage({Key? key, required this.correoUsuario}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +19,7 @@ class PerfilPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 40),
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/imagenes/perfil.png'),
-            ),
+            Icon(Icons.account_circle, size: 100, color: Colors.blue),
             SizedBox(height: 20),
             Text(
               'Bienvenido(a)',
@@ -30,13 +28,14 @@ class PerfilPage extends StatelessWidget {
             SizedBox(height: 10),
             Text(
               correoUsuario,
-              style: TextStyle(fontSize: 18, color: Colors.grey[700]),
+              style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
             SizedBox(height: 30),
             Divider(),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Configuración'),
+              trailing: Icon(Icons.chevron_right),
               onTap: () {
                 Navigator.push(
                   context,
